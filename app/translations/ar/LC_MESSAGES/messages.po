@@ -1,0 +1,139 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: clinic_desktop_app 1.0\n"
+"POT-Creation-Date: 2025-12-27 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+
+# Translations for the core UI strings (partial - add more as needed)
+
+msgid "Clinic Management System"
+msgstr "نظام إدارة العيادة"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Patients"
+msgstr "المرضى"
+
+msgid "Appointments"
+msgstr "المواعيد"
+
+msgid "Inventory"
+msgstr "المخزون"
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "Dashboard (Alt+D)"
+msgstr "لوحة التحكم (Alt+D)"
+
+msgid "Patients (Alt+P)"
+msgstr "المرضى (Alt+P)"
+
+msgid "Appointments (Alt+A)"
+msgstr "المواعيد (Alt+A)"
+
+msgid "Inventory (Alt+I)"
+msgstr "المخزون (Alt+I)"
+
+msgid "Settings (Alt+S)"
+msgstr "الإعدادات (Alt+S)"
+
+msgid "Total Patients"
+msgstr "إجمالي المرضى"
+
+msgid "Appointments Today"
+msgstr "مواعيد اليوم"
+
+msgid "Inventory Items"
+msgstr "عناصر المخزون"
+
+msgid "Name"
+msgstr "الاسم"
+
+msgid "Age"
+msgstr "العمر"
+
+msgid "Condition"
+msgstr "الحالة"
+
+msgid "Edit"
+msgstr "تعديل"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Patient"
+msgstr "المريض"
+
+msgid "Doctor"
+msgstr "الطبيب"
+
+msgid "Date"
+msgstr "التاريخ"
+
+msgid "Item"
+msgstr "العنصر"
+
+msgid "Quantity"
+msgstr "الكمية"
+
+msgid "Category"
+msgstr "الفئة"
+
+msgid "Dark Theme"
+msgstr "الوضع الداكن"
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "No patient data"
+msgstr "لا توجد بيانات للمرضى"
+
+msgid "No appointments"
+msgstr "لا توجد مواعيد"
+
+msgid "Patients by Condition"
+msgstr "المرضى حسب الحالة"
+
+msgid "Appointments per Doctor"
+msgstr "المواعيد لكل طبيب"
+
+msgid "Welcome to the Clinic Dashboard!"
+msgstr "مرحباً بك في لوحة تحكم العيادة!"
+
+msgid "Add Patient"
+msgstr "إضافة مريض"
+
+msgid "Add Appointment"
+msgstr "إضافة موعد"
+
+msgid "Add Item"
+msgstr "إضافة عنصر"
+
+msgid "Invalid Age"
+msgstr "عمر غير صالح"
+
+msgid "Please enter a valid integer age"
+msgstr "الرجاء إدخال عمر صحيح"
+
+msgid "Invalid Date"
+msgstr "تاريخ غير صالح"
+
+msgid "Please enter date as YYYY-MM-DD"
+msgstr "الرجاء إدخال التاريخ بالشكل YYYY-MM-DD"
+
+msgid "Confirm Delete"
+msgstr "تأكيد الحذف"
+
+msgid "Are you sure you want to delete this patient?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا المريض؟"
+
+msgid "Are you sure you want to delete this appointment?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا الموعد؟"
+
+msgid "Are you sure you want to delete this item?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا العنصر؟"

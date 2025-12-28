@@ -1,0 +1,45 @@
+QMainWindow {
+    background-color: #0f172a;
+    color: #e5e7eb;
+    font-family: "Segoe UI", "Inter", "Tahoma";
+    font-size: 14px;
+}
+
+#SidebarButton {
+    background-color: #111827;
+    color: #e5e7eb;
+    border: 1px solid #1f2937;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-align: left;
+}
+#SidebarButton:hover { background-color: #1f2937; }
+#SidebarButton:pressed { background-color: #374151; }
+
+#Card {
+    background-color: #1f2937;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px;
+}
+#CardTitle {
+    color: #9ca3af;
+    font-size: 14px;
+}
+#CardValue {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QTableWidget {
+    background-color: #111827;
+    gridline-color: #374151;
+    color: #e5e7eb;
+}
+QHeaderView::section {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    padding: 6px;
+    border: none;
+}

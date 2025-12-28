@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: clinic_desktop_app 1.0\n"
+"POT-Creation-Date: 2025-12-27 00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+# English baseline (mostly identity translations; keep as skeleton for future translations)
+
+msgid "Clinic Management System"
+msgstr "Clinic Management System"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Patients"
+msgstr "Patients"
+
+msgid "Appointments"
+msgstr "Appointments"
+
+msgid "Inventory"
+msgstr "Inventory"
+
+msgid "Settings"
+msgstr "Settings"
