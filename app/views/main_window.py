@@ -526,9 +526,9 @@ class MainWindow(QMainWindow):
 
         session = SessionLocal()
         try:
-            # Prevent scheduling in the past
-            from datetime import datetime as _dt
-            if appt_datetime < _dt.now():
+            # Prevent scheduling in the past (allow a small grace for timing race conditions)
+            from datetime import datetime as _dt, timedelta as _td
+            if appt_datetime < _dt.now() - _td(seconds=1):
                 QMessageBox.warning(self, _("Invalid Date/Time"), _("Cannot schedule an appointment in the past"))
                 return False
 
@@ -639,9 +639,9 @@ class MainWindow(QMainWindow):
             if t is None:
                 return False
             new_dt = datetime.combine(d, t)
-            # Do not allow rescheduling to past
-            from datetime import datetime as _dt
-            if new_dt < _dt.now():
+            # Do not allow rescheduling to past (allow small grace for timing races)
+            from datetime import datetime as _dt, timedelta as _td
+            if new_dt < _dt.now() - _td(seconds=1):
                 QMessageBox.warning(self, _("Invalid Date/Time"), _("Cannot reschedule to a past date/time"))
                 return False
 
