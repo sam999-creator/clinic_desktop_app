@@ -17,7 +17,7 @@ from datetime import date, datetime
 import gettext
 
 from app.models.patient import SessionLocal, Patient
-from app.models.appointment import Appointment
+from app.models.appointment import Appointment, has_overlapping_appointment
 from app.models.inventory import Inventory
 from app.views.edit_dialogs import PatientEditDialog
 
@@ -526,11 +526,16 @@ class MainWindow(QMainWindow):
 
         session = SessionLocal()
         try:
+            duration = int(self.input_appt_duration.value()) if hasattr(self, 'input_appt_duration') else 30
+            # Prevent exact and time-range overlap for same doctor
+            if has_overlapping_appointment(session, self.input_appt_doctor.text(), appt_datetime, duration):
+                QMessageBox.warning(self, _("Time slot unavailable"), _("This doctor already has an overlapping appointment"))
+                return False
             new_appt = Appointment(
                 patient_name=self.input_appt_patient.text(),
                 doctor_name=self.input_appt_doctor.text(),
                 date=appt_datetime,
-                duration_minutes=int(self.input_appt_duration.value()) if hasattr(self, 'input_appt_duration') else 30
+                duration_minutes=duration
             )
             session.add(new_appt)
             if not self._safe_commit(session):
@@ -622,7 +627,12 @@ class MainWindow(QMainWindow):
                     t = None
             if t is None:
                 return False
-            appt.date = datetime.combine(d, t)
+            new_dt = datetime.combine(d, t)
+            duration = getattr(appt, 'duration_minutes', 30)
+            if has_overlapping_appointment(session, appt.doctor_name, new_dt, duration, exclude_id=appt_id):
+                QMessageBox.warning(self, _("Time slot unavailable"), _("This doctor already has an overlapping appointment"))
+                return False
+            appt.date = new_dt
             if not self._safe_commit(session):
                 return False
         finally:
