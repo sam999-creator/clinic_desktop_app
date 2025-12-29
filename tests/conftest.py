@@ -1,9 +1,9 @@
 import os
-import pytest
-from PySide6.QtWidgets import QApplication, QMessageBox
-
 # run Qt in offscreen to allow tests in CI/headless
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+
+import pytest
+from PySide6.QtWidgets import QApplication, QMessageBox
 
 # Prevent blocking modal dialogs during tests (auto-accept/ignore)
 @pytest.fixture(autouse=True)
