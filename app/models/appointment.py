@@ -60,6 +60,24 @@ def _ensure_columns(engine):
         pass
 
 
+def has_overlapping_appointment(session, doctor_name, start_dt, duration_minutes=30, exclude_id=None):
+    """Return True if there's a non-cancelled appointment for `doctor_name` that overlaps
+    the interval [start_dt, start_dt + duration_minutes).
+    """
+    from datetime import timedelta
+    end_dt = start_dt + timedelta(minutes=duration_minutes)
+    q = session.query(Appointment).filter(Appointment.doctor_name == doctor_name, Appointment.status != 'cancelled')
+    if exclude_id:
+        q = q.filter(Appointment.id != exclude_id)
+    for appt in q.all():
+        a_start = appt.date
+        a_end = a_start + timedelta(minutes=getattr(appt, 'duration_minutes', 30))
+        # overlap check: intervals intersect
+        if start_dt < a_end and a_start < end_dt:
+            return True
+    return False
+
+
 def init_db():
     Base.metadata.create_all(engine)
     _ensure_columns(engine)
