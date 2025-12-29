@@ -25,17 +25,29 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      - name: Restore wheel cache
+        uses: actions/cache@v4
+        with:
+          path: .wheels
+          key: ${{ runner.os }}-wheels-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-wheels-
       - name: Install system dependencies (Linux)
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
           # Try multiple common package names; don't fail the job if one of them is unavailable.
           sudo apt-get install -y libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libx11-6 libxkbcommon0 libxcb-xinerama0 || true
+      - name: Prepare wheelhouse (.wheels)
+        run: |
+          python -c "import os,sys,subprocess; \nif not os.path.exists('.wheels') or not any(os.scandir('.wheels')): \n    subprocess.run([sys.executable,'-m','pip','install','wheel'], check=True); \n    subprocess.run([sys.executable,'-m','pip','download','-r','requirements.txt','-d','.wheels'], check=True); \nelse: print('Wheel cache restored; skipping download')"
+      - name: Show wheel count
+        run: python -c "import os; print('Wheels count:', len(os.listdir('.wheels')) if os.path.exists('.wheels') else 'no .wheels dir')"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # retry pip install up to 3 times to handle transient network issues / large wheel downloads (cross-platform)
-          pip install -r requirements.txt || pip install -r requirements.txt || pip install -r requirements.txt
+          # prefer installing from local wheel cache if present, otherwise fall back to PyPI
+          pip install --no-index --find-links .wheels -r requirements.txt || pip install -r requirements.txt || pip install -r requirements.txt
       - name: Run tests
         env:
           QT_QPA_PLATFORM: offscreen
