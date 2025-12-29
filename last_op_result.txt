@@ -9,19 +9,126 @@ noreply@example.com
 -- git_add rc=0
 -- git_commit rc=0
 STDOUT:
-[fix/session-get-deprecation 7d15e43] Replace legacy Query.get() with Session.get() and update tests
- 1 file changed, 0 insertions(+), 0 deletions(-)
+[fix/session-get-deprecation (root-commit) a2d498e] Replace legacy Query.get() with Session.get() and update tests
+ 7403 files changed, 1348861 insertions(+)
+ create mode 100644 .venv/Include/site/python3.12/greenlet/greenlet.h
+ create mode 100644 .venv/Lib/site-packages/PySide6/PySide6_Addons.json
+ create mode 100644 .venv/Lib/site-packages/PySide6/PySide6_Essentials.json
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DAnimation.pyd
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DAnimation.pyi
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DCore.pyd
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DCore.pyi
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DExtras.pyd
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DExtras.pyi
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DInput.pyd
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DInput.pyi
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DLogic.pyd
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DLogic.pyi
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DRender.pyd
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt3DRender.pyi
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DAnimation.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DCore.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DExtras.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DInput.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DLogic.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DQuick.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DQuickAnimation.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DQuickExtras.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DQuickInput.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DQuickLogic.dll
+ create mode 100644 .venv/Lib/site-packages/PySide6/Qt63DQuickRender.dll
+ create mode 100644 .venv/Lib/site-packages/PySideSTDERR:
+Auto packing the repository for optimum performance.
+See "git help gc" for manual housekeeping.
 -- pytest rc=0
 STDOUT:
 .....                                                                    [100%]
 -- gh_repo_create rc=1
+STDOUT:
+https://github.com/sam999-creator/clinic_desktop_app
 STDERR:
-GraphQL: Name already exists on this account (createRepository)
+remote: warning: File .venv/Lib/site-packages/PySide6/resources/qtwebengine_devtools_resources.debug.pak is 77.79 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        
+remote: error: Trace: 9473ce577cad6939d2c3f216277989c187a9e600351b5097c85e91ee8750322c        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File .venv/Lib/site-packages/PySide6/Qt6WebEngineCore.dll is 192.95 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To https://github.com/sam999-creator/clinic_desktop_app.git
+ ! [remote rejected] HEAD -> fix/session-get-deprecation (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/sam999-creator/clinic_desktop_app.git'
+failed to run git: exit status 1
 -- git_remote rc=0
 STDOUT:
 origin	https://github.com/sam999-creator/clinic_desktop_app.git (fetch)
 origin	https://github.com/sam999-creator/clinic_desktop_app.git (push)
 -- gh_pr_create rc=1
 STDERR:
-Warning: 4 uncommitted changes
+Warning: 1 uncommitted change
 aborted: you must first push the current branch to a remote, or use the --head flag
+
+-- final push/pr run
+-- gh_auth_status rc=0
+STDOUT:
+github.com
+  âœ“ Logged in to github.com account sam999-creator (keyring)
+  - Active account: true
+  - Git operations protocol: https
+  - Token: gho_************************************
+  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'
+-- git_commit_amend rc=0
+STDOUT:
+[fix/session-get-deprecation ba5f4b0] chore: include generated artifacts and last_op_result
+ 5 files changed, 20 insertions(+), 22 deletions(-)
+-- git_push_force rc=1
+STDERR:
+remote: warning: File .venv/Lib/site-packages/PySide6/resources/qtwebengine_devtools_resources.debug.pak is 77.79 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        
+remote: error: Trace: 0a34d461ef166ba639dcc48b5c645645a19244e0fc2cfb1717300de4e067dc84        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File .venv/Lib/site-packages/PySide6/Qt6WebEngineCore.dll is 192.95 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To https://github.com/sam999-creator/clinic_desktop_app.git
+ ! [remote rejected] fix/session-get-deprecation -> fix/session-get-deprecation (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/sam999-creator/clinic_desktop_app.git'
+-- gh_pr_create rc=1
+STDERR:
+Warning: 2 uncommitted changes
+aborted: you must first push the current branch to a remote, or use the --head flag
+-- gh_pr_status rc=1
+STDERR:
+no pull requests found for branch "fix/session-get-deprecation"
+-- pytest rc=0
+STDOUT:
+.....                                                                    [100%]
+
+-- final push/pr run
+-- gh_auth_status rc=0
+STDOUT:
+github.com
+  âœ“ Logged in to github.com account sam999-creator (keyring)
+  - Active account: true
+  - Git operations protocol: https
+  - Token: gho_************************************
+  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'
+-- git_commit_amend rc=0
+STDOUT:
+[fix/session-get-deprecation 8bb606e] chore: include generated artifacts and last_op_result
+ 5 files changed, 20 insertions(+), 22 deletions(-)
+-- git_push_force rc=1
+STDERR:
+remote: warning: File .venv/Lib/site-packages/PySide6/resources/qtwebengine_devtools_resources.debug.pak is 77.79 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB        
+remote: error: Trace: 8d83bfc25829af3c705ac92a1af817a8e9ab72cbf5d3a0eb8f8930634d3da22b        
+remote: error: See https://gh.io/lfs for more information.        
+remote: error: File .venv/Lib/site-packages/PySide6/Qt6WebEngineCore.dll is 192.95 MB; this exceeds GitHub's file size limit of 100.00 MB        
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.        
+To https://github.com/sam999-creator/clinic_desktop_app.git
+ ! [remote rejected] fix/session-get-deprecation -> fix/session-get-deprecation (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/sam999-creator/clinic_desktop_app.git'
+-- gh_pr_create rc=1
+STDERR:
+Warning: 2 uncommitted changes
+aborted: you must first push the current branch to a remote, or use the --head flag
+-- gh_pr_status rc=1
+STDERR:
+no pull requests found for branch "fix/session-get-deprecation"
+-- pytest rc=0
+STDOUT:
+.....                                                                    [100%]
