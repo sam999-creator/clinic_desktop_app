@@ -1,29 +1,27 @@
--- git_version rc=0
+-- git_config_name rc=0
+-- git_config_email rc=0
+-- git_config_get_name rc=0
 STDOUT:
-git version 2.52.0.windows.1
--- gh_version rc=0
+clinic-bot
+-- git_config_get_email rc=0
 STDOUT:
-gh version 2.83.2 (2025-12-10)
-https://github.com/cli/cli/releases/tag/v2.83.2
--- git_status rc=128
-STDERR:
-fatal: not a git repository (or any of the parent directories): .git
--- create_branch rc=128
-STDERR:
-fatal: not a git repository (or any of the parent directories): .git
--- git_add rc=128
-STDERR:
-fatal: not a git repository (or any of the parent directories): .git
--- git_commit rc=128
-STDERR:
-fatal: not a git repository (or any of the parent directories): .git
+noreply@example.com
+-- git_add rc=0
+-- git_commit rc=0
+STDOUT:
+[fix/session-get-deprecation 7d15e43] Replace legacy Query.get() with Session.get() and update tests
+ 1 file changed, 0 insertions(+), 0 deletions(-)
 -- pytest rc=0
 STDOUT:
 .....                                                                    [100%]
--- git_push rc=128
+-- gh_repo_create rc=1
 STDERR:
-fatal: not a git repository (or any of the parent directories): .git
--- gh_pr_create rc=4
+GraphQL: Name already exists on this account (createRepository)
+-- git_remote rc=0
+STDOUT:
+origin	https://github.com/sam999-creator/clinic_desktop_app.git (fetch)
+origin	https://github.com/sam999-creator/clinic_desktop_app.git (push)
+-- gh_pr_create rc=1
 STDERR:
-To get started with GitHub CLI, please run:  gh auth login
-Alternatively, populate the GH_TOKEN environment variable with a GitHub API authentication token.
+Warning: 4 uncommitted changes
+aborted: you must first push the current branch to a remote, or use the --head flag
