@@ -39,8 +39,7 @@ jobs:
           # Try multiple common package names; don't fail the job if one of them is unavailable.
           sudo apt-get install -y libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libx11-6 libxkbcommon0 libxcb-xinerama0 || true
       - name: Prepare wheelhouse (.wheels)
-        run: |
-          python -c "import os,sys,subprocess; \nif not os.path.exists('.wheels') or not any(os.scandir('.wheels')): \n    subprocess.run([sys.executable,'-m','pip','install','wheel'], check=True); \n    subprocess.run([sys.executable,'-m','pip','download','-r','requirements.txt','-d','.wheels'], check=True); \nelse: print('Wheel cache restored; skipping download')"
+        run: python scripts/prepare_wheels.py
       - name: Show wheel count
         run: python -c "import os; print('Wheels count:', len(os.listdir('.wheels')) if os.path.exists('.wheels') else 'no .wheels dir')"
       - name: Install dependencies
