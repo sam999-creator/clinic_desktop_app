@@ -29,7 +29,8 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libegl1 libgl1-mesa-glx libxkbcommon0 libxcb-xinerama0
+          # Try multiple common package names; don't fail the job if one of them is unavailable.
+          sudo apt-get install -y libegl1 libegl-mesa0 libgl1 libgl1-mesa-dri libx11-6 libxkbcommon0 libxcb-xinerama0 || true
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
