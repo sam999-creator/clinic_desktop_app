@@ -526,6 +526,22 @@ class MainWindow(QMainWindow):
 
         session = SessionLocal()
         try:
+            # Prevent scheduling in the past
+            from datetime import datetime as _dt
+            if appt_datetime < _dt.now():
+                QMessageBox.warning(self, _("Invalid Date/Time"), _("Cannot schedule an appointment in the past"))
+                return False
+
+            # Prevent double-booking exact same datetime for same doctor (ignore cancelled appts)
+            existing = session.query(Appointment).filter(
+                Appointment.doctor_name == self.input_appt_doctor.text(),
+                Appointment.date == appt_datetime,
+                Appointment.status != 'cancelled'
+            ).first()
+            if existing:
+                QMessageBox.warning(self, _("Conflict"), _("Another appointment already exists for this doctor at that time"))
+                return False
+
             new_appt = Appointment(
                 patient_name=self.input_appt_patient.text(),
                 doctor_name=self.input_appt_doctor.text(),
@@ -622,7 +638,25 @@ class MainWindow(QMainWindow):
                     t = None
             if t is None:
                 return False
-            appt.date = datetime.combine(d, t)
+            new_dt = datetime.combine(d, t)
+            # Do not allow rescheduling to past
+            from datetime import datetime as _dt
+            if new_dt < _dt.now():
+                QMessageBox.warning(self, _("Invalid Date/Time"), _("Cannot reschedule to a past date/time"))
+                return False
+
+            # Prevent conflict with other appointments for same doctor (ignore cancelled and current appt)
+            conflict = session.query(Appointment).filter(
+                Appointment.doctor_name == appt.doctor_name,
+                Appointment.date == new_dt,
+                Appointment.status != 'cancelled',
+                Appointment.id != appt.id
+            ).first()
+            if conflict:
+                QMessageBox.warning(self, _("Conflict"), _("Another appointment exists for this doctor at the chosen time"))
+                return False
+
+            appt.date = new_dt
             if not self._safe_commit(session):
                 return False
         finally:
